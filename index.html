@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ficha de Producto Lista para Tienda - Canal Pronto</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              amber: '#F59E0B',
+              orange: '#EA580C',
+              magenta: '#DB2777',
+              crimson: '#B91C1C',
+              teal: '#0284C7',
+              slate: '#0F172A'
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    /* Estilos de impresión optimizados para móvil y computadora */
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .sheet-container {
+        box-shadow: none !important;
+        border: 1px solid #cbd5e1 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        border-radius: 0 !important;
+      }
+      input, select, textarea {
+        border: 1px solid #cbd5e1 !important;
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        box-shadow: none !important;
+      }
+      select {
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        padding-right: 0.5rem !important;
+      }
+      .section-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-900 font-sans antialiased min-h-screen pb-10">
+
+  <!-- Barra de herramientas superior (No imprimible) -->
+  <div class="no-print sticky top-0 z-40 bg-slate-900/95 backdrop-blur border-b border-slate-800 text-white shadow-md">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2.5">
+        <span class="inline-block w-3 h-3 rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-pink-600"></span>
+        <span class="text-sm sm:text-base font-bold tracking-tight">Herramienta Editable • Taller 1</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <button type="button" onclick="loadExampleData()" class="px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 transition shadow-sm cursor-pointer">
+          Cargar Ejemplo
+        </button>
+        <button type="button" onclick="clearFormData()" class="px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl bg-slate-700 hover:bg-slate-600 text-white transition cursor-pointer">
+          Limpiar Todo
+        </button>
+        <button type="button" onclick="window.print()" class="px-3.5 py-2 text-xs sm:text-sm font-bold rounded-xl bg-gradient-to-r from-orange-600 to-pink-600 hover:from-orange-500 hover:to-pink-500 text-white transition shadow-sm flex items-center gap-1.5 cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2m-12 0h12v4H6v-4z" />
+          </svg>
+          Imprimir / Guardar PDF
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor principal de la Ficha -->
+  <main class="sheet-container max-w-5xl mx-auto mt-4 sm:mt-6 bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+    
+    <!-- Encabezado Corporativo -->
+    <header class="bg-slate-900 text-white px-5 py-6 sm:px-8 sm:py-7 relative overflow-hidden">
+      <div class="relative z-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-1">
+            Taller 1: Producto Listo para Tienda • Pronto Camp
+          </p>
+          <h1 class="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-white">
+            FICHA DE PRODUCTO LISTA PARA TIENDA
+          </h1>
+          <p class="text-xs sm:text-sm text-slate-300 mt-1">
+            Herramienta de diagnóstico comercial, sanitario y de empaque para el canal Pronto
+          </p>
+        </div>
+        <div class="bg-slate-800/90 border border-slate-700 rounded-xl px-4 py-2.5 text-left sm:text-right shrink-0">
+          <span class="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Facilitadora</span>
+          <span class="text-sm font-bold text-white">Ing. Massiel Erazo</span>
+        </div>
+      </div>
+      <!-- Franja degradada inferior inspirada en las ondas -->
+      <div class="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-amber-400 via-orange-600 to-pink-600"></div>
+    </header>
+
+    <!-- Datos Generales del Emprendimiento -->
+    <section class="p-4 sm:p-6 bg-amber-50/50 border-b border-slate-200">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Nombre del Emprendimiento / Marca</label>
+          <input type="text" id="marca" data-persist placeholder="Ej. Panadería Artesanal El Trigal"
+            class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Nombre del Emprendedor(a)</label>
+          <input type="text" id="emprendedor" data-persist placeholder="Nombre completo"
+            class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none" />
+        </div>
+        <div class="sm:col-span-2 lg:col-span-1">
+          <label class="block text-xs font-bold text-slate-700 mb-1">Fecha de Evaluación</label>
+          <input type="date" id="fecha" data-persist
+            class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Cuerpo con las 6 Secciones -->
+    <div class="p-4 sm:p-6 space-y-5">
+
+      <!-- SECCIÓN 1: IDENTIFICACIÓN Y FORMATO DE VENTA -->
+      <section class="section-card rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+        <div class="bg-gradient-to-r from-orange-600 to-orange-500 px-4 py-2.5 text-white flex items-center gap-2">
+          <span class="w-6 h-6 rounded-lg bg-white/20 text-white font-extrabold text-xs flex items-center justify-center">1</span>
+          <h2 class="text-sm sm:text-base font-bold tracking-wide">IDENTIFICACIÓN DEL PRODUCTO Y FORMATO DE VENTA</h2>
+        </div>
+        <div class="p-4 bg-white grid grid-cols-1 md:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Nombre del Producto</label>
+            <input type="text" id="prod_nombre" data-persist placeholder="Ej. Caja Surtida Mini Repostería (5 piezas)"
+              class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm focus:bg-white focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Categoría</label>
+            <input type="text" id="prod_categoria" data-persist placeholder="Ej. Panadería / Snacks / Bebidas"
+              class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm focus:bg-white focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Contenido Neto / Gramaje</label>
+            <input type="text" id="prod_contenido" data-persist placeholder="Ej. 150 g (5 unidades de 30 g)"
+              class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm focus:bg-white focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Tipo de Formato Comercial</label>
+            <select id="prod_formato" data-persist
+              class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm focus:bg-white focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none">
+              <option value="">Seleccionar formato...</option>
+              <option value="Estándar">Estándar</option>
+              <option value="Surtido de prueba (Sample Assortment)">Surtido de prueba (Sample Assortment)</option>
+              <option value="Presentación de bajo compromiso">Presentación de bajo compromiso</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Descripción breve para comprador</label>
+            <input type="text" id="prod_desc" data-persist placeholder="¿Qué contiene y por qué destaca en góndola?"
+              class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm focus:bg-white focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Objetivo del Formato</label>
+            <input type="text" id="prod_objetivo" data-persist placeholder="Ej. Facilitar prueba de sabores sin alto desembolso"
+              class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm focus:bg-white focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none" />
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 2: ADECUACIÓN AL CONSUMIDOR Y EXHIBICIÓN EN PRONTO -->
+      <section class="section-card rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+        <div class="bg-gradient-to-r from-amber-600 to-orange-500 px-4 py-2.5 text-white flex items-center gap-2">
+          <span class="w-6 h-6 rounded-lg bg-white/20 text-white font-extrabold text-xs flex items-center justify-center">2</span>
+          <h2 class="text-sm sm:text-base font-bold tracking-wide">ADECUACIÓN AL CONSUMIDOR Y EXHIBICIÓN EN TIENDAS PRONTO</h2>
+        </div>
+        <div class="p-4 bg-white grid grid-cols-1 md:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Ubicación en Tienda Pronto</label>
+            <input type="text" id="exh_ubicacion" data-persist placeholder="Ej. Góndola seca / Refrigerador / Caja (impulso)"
+              class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm focus:bg-white focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Vida Útil Estimada (días)</label>
+            <input type="number" id="exh_vidautil" data-persist min="1" placeholder="Ej. 21"
+              class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm focus:bg-white focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Condición de Conservación</label>
+            <input type="text" id="exh_conservacion" data-persist placeholder="Ej. Ambiente fresco y seco (18°C - 25°C) o 0°C - 4°C"
+              class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm focus:bg-white focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Consumo Inmediato</label>
+            <select id="exh_consumo" data-persist
+              class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm focus:bg-white focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none">
+              <option value="">Seleccionar categoría...</option>
+              <option value="Sí - Preenvasado listo para comer">Sí - Preenvasado listo para comer</option>
+              <option value="Sí - Foodservice / Preparado al momento">Sí - Foodservice / Preparado al momento</option>
+              <option value="No - Requiere preparación">No - Requiere preparación</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Atributos «Me veo en Pronto»</label>
+            <input type="text" id="exh_atributos" data-persist placeholder="Ej. Identificable, abre-fácil, fácil de llevar y cerrar"
+              class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm focus:bg-white focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Unidades por Caja Máster / Embalaje</label>
+            <input type="number" id="exh_unidades" data-persist min="1" placeholder="Ej. 12"
+              class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm focus:bg-white focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none" />
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 3: CUMPLIMIENTO SANITARIO Y ETIQUETADO (ARSA / RTCA 67.01.07:10) -->
+      <section class="section-card rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+        <div class="bg-gradient-to-r from-pink-700 to-orange-600 px-4 py-2.5 text-white flex items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-white/20 text-white font-extrabold text-xs flex items-center justify-center">3</span>
+            <h2 class="text-sm sm:text-base font-bold tracking-wide">CUMPLIMIENTO SANITARIO, INOCUIDAD Y ETIQUETADO (ARSA / RTCA)</h2>
+          </div>
+          <span class="text-xs font-semibold bg-white/20 px-2.5 py-0.5 rounded-full hidden sm:inline">RTCA 67.01.07:10</span>
+        </div>
+        <div class="p-4 bg-white">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
+            
+            <!-- Requisito 1 -->
+            <div class="p-3 rounded-xl border border-slate-200 bg-slate-50/70 space-y-2">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-bold text-slate-800">1. Registro Sanitario ARSA vigente</span>
+                <select id="req_estado_1" data-persist onchange="recalculateAll()"
+                  class="req-status rounded-lg border border-slate-300 bg-white px-2.5 py-1 text-xs font-bold outline-none">
+                  <option value="">Estado...</option>
+                  <option value="Cumple">Cumple</option>
+                  <option value="En trámite">En trámite</option>
+                  <option value="Pendiente">Pendiente</option>
+                  <option value="No aplica">No aplica</option>
+                </select>
+              </div>
+              <input type="text" id="req_det_1" data-persist placeholder="N° de registro o estado del trámite"
+                class="w-full rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs focus:border-orange-500 outline-none" />
+            </div>
+
+            <!-- Requisito 2 -->
+            <div class="p-3 rounded-xl border border-slate-200 bg-slate-50/70 space-y-2">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-bold text-slate-800">2. Declaración de Alérgenos</span>
+                <select id="req_estado_2" data-persist onchange="recalculateAll()"
+                  class="req-status rounded-lg border border-slate-300 bg-white px-2.5 py-1 text-xs font-bold outline-none">
+                  <option value="">Estado...</option>
+                  <option value="Cumple">Cumple</option>
+                  <option value="En trámite">En trámite</option>
+                  <option value="Pendiente">Pendiente</option>
+                  <option value="No aplica">No aplica</option>
+                </select>
+              </div>
+              <input type="text" id="req_det_2" data-persist placeholder="Ej. Contiene gluten (trigo), huevo, leche, nueces..."
+                class="w-full rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs focus:border-orange-500 outline-none" />
+            </div>
+
+            <!-- Requisito 3 -->
+            <div class="p-3 rounded-xl border border-slate-200 bg-slate-50/70 space-y-2">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-bold text-slate-800">3. Nombre del alimento e ingredientes</span>
+                <select id="req_estado_3" data-persist onchange="recalculateAll()"
+                  class="req-status rounded-lg border border-slate-300 bg-white px-2.5 py-1 text-xs font-bold outline-none">
+                  <option value="">Estado...</option>
+                  <option value="Cumple">Cumple</option>
+                  <option value="En trámite">En trámite</option>
+                  <option value="Pendiente">Pendiente</option>
+                  <option value="No aplica">No aplica</option>
+                </select>
+              </div>
+              <input type="text" id="req_det_3" data-persist placeholder="En español y en orden decreciente"
+                class="w-full rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs focus:border-orange-500 outline-none" />
+            </div>
+
+            <!-- Requisito 4 -->
+            <div class="p-3 rounded-xl border border-slate-200 bg-slate-50/70 space-y-2">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-bold text-slate-800">4. Lote y Fecha de Vencimiento</span>
+                <select id="req_estado_4" data-persist onchange="recalculateAll()"
+                  class="req-status rounded-lg border border-slate-300 bg-white px-2.5 py-1 text-xs font-bold outline-none">
+                  <option value="">Estado...</option>
+                  <option value="Cumple">Cumple</option>
+                  <option value="En trámite">En trámite</option>
+                  <option value="Pendiente">Pendiente</option>
+                  <option value="No aplica">No aplica</option>
+                </select>
+              </div>
+              <input type="text" id="req_det_4" data-persist placeholder="Ej. Impreso indeleble (Lote + EXP)"
+                class="w-full rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs focus:border-orange-500 outline-none" />
+            </div>
+
+            <!-- Requisito 5 -->
+            <div class="p-3 rounded-xl border border-slate-200 bg-slate-50/70 space-y-2">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-bold text-slate-800">5. Contenido Neto y País de Origen</span>
+                <select id="req_estado_5" data-persist onchange="recalculateAll()"
+                  class="req-status rounded-lg border border-slate-300 bg-white px-2.5 py-1 text-xs font-bold outline-none">
+                  <option value="">Estado...</option>
+                  <option value="Cumple">Cumple</option>
+                  <option value="En trámite">En trámite</option>
+                  <option value="Pendiente">Pendiente</option>
+                  <option value="No aplica">No aplica</option>
+                </select>
+              </div>
+              <input type="text" id="req_det_5" data-persist placeholder="Ej. 150 g | Hecho en Honduras"
+                class="w-full rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs focus:border-orange-500 outline-none" />
+            </div>
+
+            <!-- Requisito 6 -->
+            <div class="p-3 rounded-xl border border-slate-200 bg-slate-50/70 space-y-2">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-bold text-slate-800">6. Datos Fabricante / Distribuidor</span>
+                <select id="req_estado_6" data-persist onchange="recalculateAll()"
+                  class="req-status rounded-lg border border-slate-300 bg-white px-2.5 py-1 text-xs font-bold outline-none">
+                  <option value="">Estado...</option>
+                  <option value="Cumple">Cumple</option>
+                  <option value="En trámite">En trámite</option>
+                  <option value="Pendiente">Pendiente</option>
+                  <option value="No aplica">No aplica</option>
+                </select>
+              </div>
+              <input type="text" id="req_det_6" data-persist placeholder="Nombre, dirección exacta y teléfono"
+                class="w-full rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs focus:border-orange-500 outline-none" />
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 4: EMPAQUE RECICLABLE O DE MENOR IMPACTO AMBIENTAL -->
+      <section class="section-card rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+        <div class="bg-gradient-to-r from-sky-700 to-teal-600 px-4 py-2.5 text-white flex items-center gap-2">
+          <span class="w-6 h-6 rounded-lg bg-white/20 text-white font-extrabold text-xs flex items-center justify-center">4</span>
+          <h2 class="text-sm sm:text-base font-bold tracking-wide">ENFOQUE DE EMPAQUE RECICLABLE O DE MENOR IMPACTO AMBIENTAL</h2>
+        </div>
+        <div class="p-4 bg-white grid grid-cols-1 md:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Material Principal del Empaque</label>
+            <input type="text" id="sos_material" data-persist placeholder="Ej. Cartón kraft, vidrio, aluminio, bolsa bioplástica..."
+              class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm focus:bg-white focus:border-sky-600 focus:ring-2 focus:ring-sky-200 outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Clasificación Ambiental</label>
+            <select id="sos_clasificacion" data-persist
+              class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm focus:bg-white focus:border-sky-600 focus:ring-2 focus:ring-sky-200 outline-none">
+              <option value="">Seleccionar enfoque...</option>
+              <option value="Menor impacto / Reciclable actual">Menor impacto / Reciclable actual</option>
+              <option value="Alternativa del futuro (compostable/bioplástico)">Alternativa del futuro (compostable/bioplástico)</option>
+              <option value="En transición">En transición</option>
+              <option value="Convencional">Convencional</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Acción de Mejora Sostenible</label>
+            <input type="text" id="sos_accion" data-persist placeholder="Ej. Reducción de peso plástico o sustitución de bandeja"
+              class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm focus:bg-white focus:border-sky-600 focus:ring-2 focus:ring-sky-200 outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Disposición Post-Consumo</label>
+            <input type="text" id="sos_disposicion" data-persist placeholder="Ej. Reciclable en cadena de cartón / Compostable"
+              class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm focus:bg-white focus:border-sky-600 focus:ring-2 focus:ring-sky-200 outline-none" />
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 5: ESTRUCTURA DE PRECIO Y CONTRASTE CON RANGO DE REFERENCIA -->
+      <section class="section-card rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+        <div class="bg-gradient-to-r from-orange-600 via-amber-600 to-pink-600 px-4 py-2.5 text-white flex items-center gap-2">
+          <span class="w-6 h-6 rounded-lg bg-white/20 text-white font-extrabold text-xs flex items-center justify-center">5</span>
+          <h2 class="text-sm sm:text-base font-bold tracking-wide">ESTRUCTURA DE PRECIO Y CONTRASTE CON RANGO DE REFERENCIA (LEMPIRAS - L)</h2>
+        </div>
+        <div class="p-4 bg-white space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Costo Unitario Producción (L)</label>
+              <input type="number" id="prc_costo" data-persist step="0.01" min="0" oninput="recalculateAll()" placeholder="0.00"
+                class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm font-semibold text-right focus:bg-white focus:border-orange-500 outline-none" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Precio Entrega a Tienda (L)</label>
+              <input type="number" id="prc_entrega" data-persist step="0.01" min="0" oninput="recalculateAll()" placeholder="0.00"
+                class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm font-semibold text-right focus:bg-white focus:border-orange-500 outline-none" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">PVP Sugerido sin ISV (L)</label>
+              <input type="number" id="prc_pvp_sin" data-persist step="0.01" min="0" oninput="recalculateAll()" placeholder="0.00"
+                class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm font-semibold text-right focus:bg-white focus:border-orange-500 outline-none" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-amber-900 mb-1">PVP Final Góndola con ISV 15% (L)</label>
+              <div id="prc_pvp_con" class="w-full rounded-xl border border-amber-300 bg-amber-100/80 px-3 py-2 text-sm font-extrabold text-amber-950 text-right">
+                L 0.00
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Rango Referencia Canal Pronto (L)</label>
+              <input type="text" id="prc_rango" data-persist placeholder="Ej. L 45.00 - L 60.00"
+                class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm text-center focus:bg-white focus:border-orange-500 outline-none" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Evaluación vs. Canal</label>
+              <select id="prc_evaluacion" data-persist
+                class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm focus:bg-white focus:border-orange-500 outline-none">
+                <option value="">Seleccionar evaluación...</option>
+                <option value="Dentro del rango competitivo">Dentro del rango competitivo</option>
+                <option value="Por debajo del rango (revisar margen)">Por debajo del rango (revisar margen)</option>
+                <option value="Por encima del rango (ajustar costo/formato)">Por encima del rango (ajustar costo/formato)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Indicadores automáticos de márgenes -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-slate-100">
+            <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2">
+              <span class="text-xs font-bold text-slate-600">Margen Emprendedor:</span>
+              <span id="margen_emprendedor" class="text-sm font-extrabold text-orange-700">0.0%</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2">
+              <span class="text-xs font-bold text-slate-600">Margen Canal Tienda:</span>
+              <span id="margen_canal" class="text-sm font-extrabold text-pink-700">0.0%</span>
+            </div>
+            <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2">
+              <span class="text-xs font-bold text-slate-600">¿Incluye ISV en góndola?:</span>
+              <span class="text-xs font-bold text-slate-800">Sí (Art. 25 Ley Prot. Cons.)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 6: DIAGNÓSTICO «LISTO PARA TIENDA» Y PRÓXIMOS PASOS -->
+      <section class="section-card rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+        <div class="bg-slate-900 px-4 py-2.5 text-white flex items-center gap-2">
+          <span class="w-6 h-6 rounded-lg bg-amber-500 text-slate-950 font-extrabold text-xs flex items-center justify-center">6</span>
+          <h2 class="text-sm sm:text-base font-bold tracking-wide">DIAGNÓSTICO «LISTO PARA TIENDA» Y PRÓXIMOS PASOS</h2>
+        </div>
+        <div class="p-4 bg-white space-y-3.5">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="rounded-xl border border-amber-200 bg-amber-50 p-3 flex flex-col justify-center items-center text-center">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-slate-600">Requisitos Sanitarios</span>
+              <span id="diag_conteo" class="text-lg font-extrabold text-amber-900 mt-0.5">0 de 6</span>
+            </div>
+            <div id="diag_badge_box" class="rounded-xl border border-orange-200 bg-orange-50 p-3 flex flex-col justify-center items-center text-center">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-slate-600">Estatus General</span>
+              <span id="diag_estatus" class="text-sm sm:text-base font-extrabold text-orange-700 mt-0.5">EN AJUSTE / PENDIENTE</span>
+            </div>
+            <div class="rounded-xl border border-slate-200 bg-slate-50 p-3">
+              <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">Plazo Entrega Muestras</label>
+              <input type="date" id="diag_plazo" data-persist
+                class="w-full rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-900 outline-none focus:border-orange-500" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Acción Prioritaria Antes de Presentar a Pronto</label>
+            <textarea id="diag_accion" data-persist rows="2" placeholder="Describe los ajustes clave en etiqueta, registro sanitario, empaque o precio antes de llevar muestras..."
+              class="w-full rounded-xl border border-slate-300 bg-amber-50/40 px-3 py-2 text-sm focus:bg-white focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none"></textarea>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Pie de página institucional con ondas y logotipos vectoriales -->
+    <footer class="relative pt-6 bg-white border-t border-slate-100 overflow-hidden">
+      <!-- Contenedor de Logos Institucionales -->
+      <div class="relative z-10 max-w-4xl mx-auto px-4 pb-6 grid grid-cols-2 sm:grid-cols-4 gap-4 items-center justify-items-center">
+        
+        <!-- Logo 1: Fundación Terra -->
+        <div class="flex flex-col items-center">
+          <svg class="h-7 w-auto mb-0.5" viewBox="0 0 120 42" fill="none">
+            <path d="M22 36C38 14 74 14 96 34C72 22 42 22 22 36Z" fill="#F59E0B" />
+            <path d="M32 26C52 8 82 10 100 30C80 16 54 16 32 26Z" fill="#EA580C" />
+            <path d="M62 12C78 8 94 16 102 28C92 18 76 12 62 12Z" fill="#DB2777" />
+          </svg>
+          <span class="text-xs sm:text-sm font-bold tracking-tight text-slate-900">
+            Fundación<span class="font-extrabold">Terra</span>
+          </span>
+        </div>
+
+        <!-- Logo 2: Terra te Impulsa -->
+        <div class="flex items-center justify-center sm:border-l border-slate-300 sm:pl-4 h-10">
+          <span class="text-xs sm:text-sm font-extrabold text-slate-900">
+            Terra <span class="font-medium text-sky-600">te Impulsa</span>
+          </span>
+        </div>
+
+        <!-- Logo 3: Pronto -->
+        <div class="flex items-center justify-center sm:border-l border-slate-300 sm:pl-4 h-10">
+          <span class="text-xl sm:text-2xl font-black italic tracking-tight text-slate-950">
+            Pronto
+          </span>
+        </div>
+
+        <!-- Logo 4: Impact Hub Tegucigalpa -->
+        <div class="flex items-center gap-1.5 sm:border-l border-slate-300 sm:pl-4 h-10">
+          <div class="bg-red-800 text-white px-1.5 py-1 rounded-sm leading-none text-left">
+            <span class="block text-[7px] font-bold tracking-wider">IMPACT</span>
+            <span class="block text-[11px] font-black tracking-tight">HUB</span>
+          </div>
+          <span class="text-xs font-extrabold text-slate-800">Tegucigalpa</span>
+        </div>
+
+      </div>
+
+      <!-- Ondas inferiores corporativas (Ámbar -> Naranja -> Magenta) -->
+      <svg class="w-full h-7 sm:h-9 block" viewBox="0 0 1440 60" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#F59E0B" />
+            <stop offset="50%" stop-color="#EA580C" />
+            <stop offset="100%" stop-color="#DB2777" />
+          </linearGradient>
+        </defs>
+        <path d="M0,5 C120,45 240,48 420,48 L1360,48 C1405,48 1425,40 1440,32 L1440,60 L0,60 Z" fill="url(#waveGrad)" />
+        <path d="M0,22 C110,50 220,52 380,52 L1440,52 L1440,60 L0,60 Z" fill="#EA580C" opacity="0.85" />
+      </svg>
+    </footer>
+  </main>
+
+  <script>
+    const STORAGE_KEY = 'ficha_producto_pronto_v1';
+
+    // Formateo de moneda en Lempiras
+    function formatLempiras(val) {
+      if (isNaN(val) || val === null) return 'L 0.00';
+      return 'L ' + val.toLocaleString('es-HN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    // Recalcula PVP con ISV, márgenes y semáforo sanitario
+    function recalculateAll() {
+      const costo = parseFloat(document.getElementById('prc_costo').value) || 0;
+      const entrega = parseFloat(document.getElementById('prc_entrega').value) || 0;
+      const pvpSin = parseFloat(document.getElementById('prc_pvp_sin').value) || 0;
+
+      // PVP con ISV 15%
+      const pvpCon = pvpSin > 0 ? pvpSin * 1.15 : 0;
+      document.getElementById('prc_pvp_con').textContent = formatLempiras(pvpCon);
+
+      // Margen Emprendedor: (Entrega - Costo) / Entrega
+      const mEmp = entrega > 0 ? ((entrega - costo) / entrega) * 100 : 0;
+      document.getElementById('margen_emprendedor').textContent = mEmp.toFixed(1) + '%';
+
+      // Margen Canal Tienda: (PVP sin ISV - Entrega) / PVP sin ISV
+      const mCan = pvpSin > 0 ? ((pvpSin - entrega) / pvpSin) * 100 : 0;
+      document.getElementById('margen_canal').textContent = mCan.toFixed(1) + '%';
+
+      // Conteo de requisitos sanitarios cumplidos
+      const selects = document.querySelectorAll('.req-status');
+      let cumplidos = 0;
+      selects.forEach(sel => {
+        // Estilo visual dinámico por estado
+        sel.classList.remove('bg-emerald-100', 'text-emerald-800', 'border-emerald-300', 'bg-amber-100', 'text-amber-800', 'border-amber-300', 'bg-red-100', 'text-red-800', 'border-red-300');
+        if (sel.value === 'Cumple') {
+          cumplidos++;
+          sel.classList.add('bg-emerald-100', 'text-emerald-800', 'border-emerald-300');
+        } else if (sel.value === 'En trámite') {
+          sel.classList.add('bg-amber-100', 'text-amber-800', 'border-amber-300');
+        } else if (sel.value === 'Pendiente') {
+          sel.classList.add('bg-red-100', 'text-red-800', 'border-red-300');
+        }
+      });
+
+      document.getElementById('diag_conteo').textContent = `${cumplidos} de 6`;
+
+      const badgeBox = document.getElementById('diag_badge_box');
+      const estatusEl = document.getElementById('diag_estatus');
+
+      if (cumplidos === 6) {
+        badgeBox.className = 'rounded-xl border border-emerald-300 bg-emerald-50 p-3 flex flex-col justify-center items-center text-center';
+        estatusEl.className = 'text-sm sm:text-base font-extrabold text-emerald-700 mt-0.5';
+        estatusEl.textContent = 'LISTO PARA TIENDA';
+      } else {
+        badgeBox.className = 'rounded-xl border border-orange-200 bg-orange-50 p-3 flex flex-col justify-center items-center text-center';
+        estatusEl.className = 'text-sm sm:text-base font-extrabold text-orange-700 mt-0.5';
+        estatusEl.textContent = 'EN AJUSTE / PENDIENTE';
+      }
+
+      saveToLocal();
+    }
+
+    // Guarda el estado en localStorage para no perder avances en móvil o PC
+    function saveToLocal() {
+      const data = {};
+      document.querySelectorAll('[data-persist]').forEach(el => {
+        data[el.id] = el.value;
+      });
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      } catch (e) {}
+    }
+
+    function loadFromLocal() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const data = JSON.parse(raw);
+        Object.keys(data).forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.value = data[id];
+        });
+      } catch (e) {}
+      recalculateAll();
+    }
+
+    // Carga el ejemplo de referencia del taller
+    function loadExampleData() {
+      const example = {
+        marca: 'Panadería Artesanal El Trigal',
+        emprendedor: 'María Fernanda López',
+        fecha: '2026-11-27',
+        prod_nombre: 'Caja Surtida Mini Repostería (5 piezas)',
+        prod_categoria: 'Panadería / Repostería empacada',
+        prod_contenido: '150 g (5 unidades de 30 g)',
+        prod_formato: 'Surtido de prueba (Sample Assortment)',
+        prod_desc: 'Surtido de galleta de avena, panecillo, hojaldre y mini budín listos para llevar.',
+        prod_objetivo: 'Facilitar prueba de sabores sin alto desembolso',
+        exh_ubicacion: 'Góndola / Anaquel seco (impulso)',
+        exh_vidautil: '21',
+        exh_conservacion: 'Ambiente fresco y seco (18°C - 25°C)',
+        exh_consumo: 'Sí - Preenvasado listo para comer',
+        exh_atributos: 'Identificable con ventana transparente, abre-fácil y cierre resellable',
+        exh_unidades: '12',
+        req_estado_1: 'Cumple',
+        req_det_1: 'HN-A-0826-0142 (vigente)',
+        req_estado_2: 'Cumple',
+        req_det_2: 'Contiene trigo (gluten), huevo y leche',
+        req_estado_3: 'Cumple',
+        req_det_3: 'En español, orden decreciente',
+        req_estado_4: 'Cumple',
+        req_det_4: 'Impreso indeleble (Lote + EXP)',
+        req_estado_5: 'Cumple',
+        req_det_5: '150 g | Hecho en Honduras',
+        req_estado_6: 'Cumple',
+        req_det_6: 'Nombre, dirección y tel. incluidos',
+        sos_material: 'Caja de cartón kraft reciclable con ventana de celulosa',
+        sos_clasificacion: 'Menor impacto / Reciclable actual',
+        sos_accion: 'Reducción de plástico en 70% frente a bandeja convencional',
+        sos_disposicion: 'Reciclable en cadena de cartón/papel',
+        prc_costo: '24.00',
+        prc_entrega: '36.00',
+        prc_pvp_sin: '47.83',
+        prc_rango: 'L 45.00 - L 60.00',
+        prc_evaluacion: 'Dentro del rango competitivo',
+        diag_plazo: '2026-12-04',
+        diag_accion: 'Imprimir lote final de etiquetas con código de barras EAN-13 y entregar 6 cajas muestra para validación en tienda piloto.'
+      };
+      Object.keys(example).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = example[id];
+      });
+      recalculateAll();
+    }
+
+    function clearFormData() {
+      document.querySelectorAll('[data-persist]').forEach(el => {
+        el.value = '';
+      });
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch (e) {}
+      recalculateAll();
+    }
+
+    // Escuchar cambios en todos los campos persistentes
+    document.querySelectorAll('[data-persist]').forEach(el => {
+      el.addEventListener('input', saveToLocal);
+      el.addEventListener('change', saveToLocal);
+    });
+
+    window.addEventListener('DOMContentLoaded', loadFromLocal);
+  </script>
+</body>
+</html>
